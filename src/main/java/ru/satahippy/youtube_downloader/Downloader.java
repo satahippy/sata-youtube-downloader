@@ -2,6 +2,8 @@ package ru.satahippy.youtube_downloader;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +21,9 @@ import java.util.stream.Collectors;
 
 public class Downloader {
 
-    private static Formats formats = new Formats();
+    private static final Logger logger = LoggerFactory.getLogger(Downloader.class);
+
+    private static final Formats formats = new Formats();
 
     public List<Video> videos(String url) throws IOException {
         Map<String, Object> data = getJsonData(url);
@@ -77,6 +81,7 @@ public class Downloader {
             Format format = formats.get(itag);
 
             if (format == null) {
+                logger.warn("Unsupported video format (itag): {}", itag);
                 continue;
             }
 
