@@ -1,0 +1,5 @@
+# Gradle
+/build
+/out
+/classes
+.gradle
