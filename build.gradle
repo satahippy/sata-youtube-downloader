@@ -8,6 +8,7 @@ sourceCompatibility = 1.8
 ext {
     jacksonVersion = "2.8.0"
     slf4jVersion = "1.7.21"
+    junitVersion = "4.12"
 }
 
 repositories {
@@ -17,4 +18,6 @@ repositories {
 dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     compile "org.slf4j:slf4j-api:$slf4jVersion"
+
+    testCompile "junit:junit:$junitVersion"
 }
